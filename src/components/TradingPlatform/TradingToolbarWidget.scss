@@ -1,0 +1,302 @@
+.trading-toolbar-widget {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    .trading-toggle-button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--color-border, #e1e5e9);
+        border-radius: 8px;
+        background: var(--color-bg-primary, #ffffff);
+        color: var(--color-text-primary, #333);
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+        
+        &:hover {
+            background: var(--color-bg-hover, #f1f3f4);
+            border-color: var(--color-primary, #2e7d32);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        &.active {
+            background: var(--color-primary, #2e7d32);
+            color: white;
+            border-color: var(--color-primary, #2e7d32);
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+        }
+        
+        .button-icon {
+            font-size: 1.2rem;
+        }
+        
+        .status-indicators {
+            display: flex;
+            gap: 0.25rem;
+            margin-left: 0.5rem;
+            
+            .indicator {
+                padding: 0.125rem 0.375rem;
+                border-radius: 12px;
+                font-size: 0.7rem;
+                font-weight: 600;
+                
+                &.positions {
+                    background: rgba(255, 193, 7, 0.2);
+                    color: var(--color-warning, #ffc107);
+                }
+                
+                &.bots {
+                    background: rgba(13, 202, 240, 0.2);
+                    color: var(--color-info, #0dcaf0);
+                }
+                
+                &.pnl {
+                    &.positive {
+                        background: rgba(40, 167, 69, 0.2);
+                        color: var(--color-success, #28a745);
+                    }
+                    
+                    &.negative {
+                        background: rgba(220, 53, 69, 0.2);
+                        color: var(--color-danger, #dc3545);
+                    }
+                }
+            }
+        }
+    }
+    
+    .quick-actions {
+        display: flex;
+        gap: 0.25rem;
+        
+        .quick-action-btn {
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--color-border, #e1e5e9);
+            border-radius: 6px;
+            background: var(--color-bg-primary, #ffffff);
+            color: var(--color-text-primary, #333);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            
+            &:hover {
+                background: var(--color-bg-hover, #f1f3f4);
+                border-color: var(--color-primary, #2e7d32);
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+.trading-platform-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .overlay-backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+    }
+    
+    .trading-platform-container {
+        position: relative;
+        width: 95vw;
+        height: 90vh;
+        max-width: 1400px;
+        max-height: 900px;
+        background: var(--color-bg-primary, #ffffff);
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        
+        .platform-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--color-border, #e1e5e9);
+            background: var(--color-bg-secondary, #f8f9fa);
+            
+            h2 {
+                margin: 0;
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: var(--color-text-primary, #333);
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                
+                &::before {
+                    content: '💹';
+                    font-size: 1.75rem;
+                }
+            }
+            
+            .close-overlay-button {
+                width: 40px;
+                height: 40px;
+                border: none;
+                border-radius: 50%;
+                background: var(--color-bg-tertiary, #f1f3f4);
+                color: var(--color-text-secondary, #6c757d);
+                font-size: 1.25rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.2s ease;
+                
+                &:hover {
+                    background: var(--color-danger, #dc3545);
+                    color: white;
+                    transform: scale(1.1);
+                }
+            }
+        }
+        
+        .platform-content {
+            flex: 1;
+            overflow: hidden;
+        }
+    }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+    .trading-toolbar-widget {
+        .trading-toggle-button {
+            padding: 0.5rem 0.75rem;
+            
+            .button-text {
+                display: none;
+            }
+            
+            .status-indicators {
+                margin-left: 0.25rem;
+            }
+        }
+        
+        .quick-actions {
+            display: none;
+        }
+    }
+    
+    .trading-platform-overlay {
+        .trading-platform-container {
+            width: 100vw;
+            height: 100vh;
+            max-width: none;
+            max-height: none;
+            border-radius: 0;
+            
+            .platform-header {
+                padding: 1rem 1.5rem;
+                
+                h2 {
+                    font-size: 1.25rem;
+                }
+            }
+        }
+    }
+}
+
+// Dark theme
+.dark-theme .trading-toolbar-widget {
+    .trading-toggle-button {
+        background: var(--color-bg-primary-dark, #2d2d2d);
+        border-color: var(--color-border-dark, #404040);
+        color: var(--color-text-primary-dark, #ffffff);
+        
+        &:hover {
+            background: var(--color-bg-hover-dark, #3a3a3a);
+        }
+        
+        &.active {
+            background: var(--color-primary, #2e7d32);
+            color: white;
+        }
+    }
+    
+    .quick-actions .quick-action-btn {
+        background: var(--color-bg-primary-dark, #2d2d2d);
+        border-color: var(--color-border-dark, #404040);
+        color: var(--color-text-primary-dark, #ffffff);
+        
+        &:hover {
+            background: var(--color-bg-hover-dark, #3a3a3a);
+        }
+    }
+}
+
+.dark-theme .trading-platform-overlay {
+    .trading-platform-container {
+        background: var(--color-bg-primary-dark, #2d2d2d);
+        
+        .platform-header {
+            background: var(--color-bg-secondary-dark, #1a1a1a);
+            border-bottom-color: var(--color-border-dark, #404040);
+            
+            h2 {
+                color: var(--color-text-primary-dark, #ffffff);
+            }
+            
+            .close-overlay-button {
+                background: var(--color-bg-tertiary-dark, #3a3a3a);
+                color: var(--color-text-secondary-dark, #b0b0b0);
+            }
+        }
+    }
+}
+
+// Animation for opening/closing
+.trading-platform-overlay {
+    animation: overlayFadeIn 0.3s ease-out;
+}
+
+.trading-platform-container {
+    animation: platformSlideIn 0.3s ease-out;
+}
+
+@keyframes overlayFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes platformSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}

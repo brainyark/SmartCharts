@@ -26,6 +26,8 @@ import ToolbarWidgetStore from './ToolbarWidgetStore';
 import ScrollStore from './ScrollStore';
 import { TMainStore } from '../types';
 import ChartAdapterStore from './ChartAdapterStore';
+import TradingPlatformStore from './TradingPlatformStore';
+import TradingBotStore from './TradingBotStore';
 
 export default class MainStore implements TMainStore {
     notifier = new Notifier();
@@ -53,6 +55,8 @@ export default class MainStore implements TMainStore {
     paginationLoader = new PaginationLoaderStore(this);
     toolbarWidget = new ToolbarWidgetStore(this);
     scroll = new ScrollStore();
+    tradingPlatform: TradingPlatformStore = new TradingPlatformStore(this);
+    tradingBot: TradingBotStore = new TradingBotStore(this);
 }
 
 let stores_context: React.Context<TMainStore>;

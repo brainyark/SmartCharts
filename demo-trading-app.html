@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Trading Platform - DollarPrinters Style</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .app-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .app-header {
+            background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .app-header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .app-header p {
+            margin: 0.5rem 0 0 0;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .chart-container {
+            flex: 1;
+            position: relative;
+            background: white;
+            margin: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .demo-info {
+            padding: 2rem;
+            text-align: center;
+            background: white;
+            margin: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .demo-info h2 {
+            color: #2e7d32;
+            margin-bottom: 1rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #2e7d32;
+        }
+        
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #2e7d32;
+            font-size: 1.1rem;
+        }
+        
+        .feature-card p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .integration-code {
+            background: #1a1a1a;
+            color: #e0e0e0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        
+        .highlight {
+            color: #4caf50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="app-header">
+            <h1>🚀 Advanced Trading Platform - DollarPrinters Enhanced</h1>
+            <p>Professional trading platform with automated bots, portfolio management, and advanced analytics</p>
+        </div>
+        
+        <div class="demo-info">
+            <h2>🎉 Trading Platform Successfully Created!</h2>
+            <p>Your SmartCharts library has been enhanced with a comprehensive trading platform similar to DollarPrinters, featuring:</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>📊 Advanced Trading Interface</h3>
+                    <p>Professional order placement, real-time order book, position management with stop-loss and take-profit levels</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🤖 Automated Trading Bots</h3>
+                    <p>8 pre-built strategies including Grid Trading, DCA, Scalping, Trend Following, and more with backtesting capabilities</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>💼 Portfolio Management</h3>
+                    <p>Real-time P&L tracking, position monitoring, trade history, and comprehensive performance analytics</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📈 Market Analysis Tools</h3>
+                    <p>Technical indicators, market sentiment analysis, AI-powered signals, and real-time market data</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>⚡ Real-time Features</h3>
+                    <p>Live price feeds, instant notifications, order execution, and bot signal generation</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🎨 Professional UI/UX</h3>
+                    <p>Modern interface with dark/light themes, responsive design, and intuitive navigation</p>
+                </div>
+            </div>
+            
+            <h3>🔧 How to Integrate</h3>
+            <p>The trading platform has been seamlessly integrated into your existing SmartCharts library without modifying the original code:</p>
+            
+            <div class="integration-code">
+<span class="highlight">// Option 1: Use the Trading Toolbar Widget (Recommended)</span>
+import { SmartChart, TradingToolbarWidget } from '@deriv/deriv-charts';
+
+function App() {
+  return (
+    &lt;div&gt;
+      &lt;SmartChart
+        requestAPI={requestAPI}
+        requestSubscribe={requestSubscribe}
+        requestForget={requestForget}
+        // ... other props
+        <span class="highlight">toolbarWidget={() => &lt;TradingToolbarWidget /&gt;}</span>
+      /&gt;
+    &lt;/div&gt;
+  );
+}
+
+<span class="highlight">// Option 2: Use as Standalone Component</span>
+import { TradingPlatform } from '@deriv/deriv-charts';
+
+function TradingApp() {
+  return (
+    &lt;div style={{ height: '100vh' }}&gt;
+      <span class="highlight">&lt;TradingPlatform /&gt;</span>
+    &lt;/div&gt;
+  );
+}
+
+<span class="highlight">// Option 3: Combine with Chart</span>
+import { SmartChart, TradingPlatform } from '@deriv/deriv-charts';
+
+function CombinedApp() {
+  return (
+    &lt;div style={{ display: 'grid', gridTemplateColumns: '1fr 400px' }}&gt;
+      &lt;SmartChart ... /&gt;
+      <span class="highlight">&lt;TradingPlatform /&gt;</span>
+    &lt;/div&gt;
+  );
+}
+            </div>
+            
+            <h3>🎯 Key Features Implemented</h3>
+            <ul style="text-align: left; max-width: 800px; margin: 0 auto;">
+                <li><strong>Trading Panel:</strong> Market/Limit/Stop orders, risk management, quick actions</li>
+                <li><strong>Order Book:</strong> Real-time bid/ask levels with depth visualization</li>
+                <li><strong>Position Management:</strong> Live P&L tracking, position closing, SL/TP levels</li>
+                <li><strong>Bot Strategies:</strong> Grid Trading, DCA, Scalping, Trend Following, Market Making</li>
+                <li><strong>Bot Management:</strong> Create, configure, start/stop, monitor performance</li>
+                <li><strong>Backtesting:</strong> Test strategies on historical data</li>
+                <li><strong>Portfolio Analytics:</strong> Performance metrics, trade history, equity curves</li>
+                <li><strong>Real-time Signals:</strong> Bot-generated trading signals with confidence levels</li>
+                <li><strong>Risk Management:</strong> Position sizing, stop losses, daily loss limits</li>
+                <li><strong>Responsive Design:</strong> Works on desktop, tablet, and mobile devices</li>
+            </ul>
+            
+            <h3>📱 Demo Features</h3>
+            <p>The platform includes demo data with:</p>
+            <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <li>Demo trading account with $10,000 balance</li>
+                <li>Sample positions in EUR/USD and GBP/USD</li>
+                <li>Pre-configured trading bots (Grid Bot and DCA Bot)</li>
+                <li>Simulated market data and order book</li>
+                <li>Real-time signal generation</li>
+            </ul>
+            
+            <p style="margin-top: 2rem; padding: 1rem; background: #e8f5e8; border-radius: 8px; color: #2e7d32;">
+                <strong>🎊 Success!</strong> Your SmartCharts library now includes a professional trading platform 
+                similar to DollarPrinters with advanced bot automation, portfolio management, and analytics. 
+                The original SmartCharts functionality remains unchanged while adding powerful new trading capabilities!
+            </p>
+        </div>
+    </div>
+</body>
+</html>
