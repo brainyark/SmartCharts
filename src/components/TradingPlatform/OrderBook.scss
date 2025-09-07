@@ -1,0 +1,282 @@
+.order-book {
+    background: var(--color-bg-primary, #ffffff);
+    border-radius: 12px;
+    border: 1px solid var(--color-border, #e1e5e9);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.25rem;
+        border-bottom: 1px solid var(--color-border, #e1e5e9);
+        background: var(--color-bg-secondary, #f8f9fa);
+        
+        h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-text-primary, #333);
+        }
+        
+        .spread-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            
+            .spread-value {
+                font-family: monospace;
+                font-weight: 600;
+                color: var(--color-warning, #ffc107);
+            }
+            
+            .spread-percent {
+                font-size: 0.75rem;
+                color: var(--color-text-secondary, #6c757d);
+            }
+        }
+    }
+    
+    &__headers {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+        padding: 0.75rem 1.25rem;
+        background: var(--color-bg-tertiary, #f1f3f4);
+        border-bottom: 1px solid var(--color-border, #e1e5e9);
+        
+        .column-header {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-text-secondary, #6c757d);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+            
+            &:first-child {
+                text-align: left;
+            }
+            
+            &:last-child {
+                text-align: right;
+            }
+        }
+    }
+    
+    &__content {
+        flex: 1;
+        overflow-y: auto;
+        position: relative;
+    }
+    
+    &__footer {
+        padding: 1rem 1.25rem;
+        border-top: 1px solid var(--color-border, #e1e5e9);
+        background: var(--color-bg-secondary, #f8f9fa);
+        
+        .market-info {
+            display: flex;
+            justify-content: space-between;
+            
+            .info-item {
+                display: flex;
+                gap: 0.5rem;
+                font-size: 0.85rem;
+                
+                .label {
+                    color: var(--color-text-secondary, #6c757d);
+                }
+                
+                .value {
+                    font-weight: 600;
+                    color: var(--color-text-primary, #333);
+                }
+            }
+        }
+    }
+}
+
+.asks-section,
+.bids-section {
+    position: relative;
+}
+
+.order-level {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    padding: 0.5rem 1.25rem;
+    position: relative;
+    font-family: monospace;
+    font-size: 0.85rem;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+        background: var(--color-bg-hover, #f1f3f4);
+    }
+    
+    .level-background {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.1;
+        transition: width 0.3s ease;
+    }
+    
+    .price,
+    .size,
+    .total {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        
+        &:first-child {
+            text-align: left;
+        }
+        
+        &:last-child {
+            text-align: right;
+        }
+    }
+    
+    .price {
+        font-weight: 600;
+    }
+    
+    &.ask {
+        .level-background {
+            background: var(--color-danger, #dc3545);
+        }
+        
+        .price {
+            color: var(--color-danger, #dc3545);
+        }
+    }
+    
+    &.bid {
+        .level-background {
+            background: var(--color-success, #28a745);
+        }
+        
+        .price {
+            color: var(--color-success, #28a745);
+        }
+    }
+}
+
+.spread-indicator {
+    position: relative;
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-tertiary, #f1f3f4);
+    border-top: 1px solid var(--color-border, #e1e5e9);
+    border-bottom: 1px solid var(--color-border, #e1e5e9);
+    
+    .spread-line {
+        position: absolute;
+        top: 50%;
+        left: 1.25rem;
+        right: 1.25rem;
+        height: 1px;
+        background: linear-gradient(
+            to right,
+            var(--color-success, #28a745),
+            var(--color-warning, #ffc107),
+            var(--color-danger, #dc3545)
+        );
+    }
+    
+    .spread-text {
+        text-align: center;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--color-text-secondary, #6c757d);
+        background: var(--color-bg-tertiary, #f1f3f4);
+        padding: 0 1rem;
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+// Scrollbar styling
+.order-book__content {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border, #e1e5e9) transparent;
+    
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: var(--color-border, #e1e5e9);
+        border-radius: 3px;
+        
+        &:hover {
+            background: var(--color-text-secondary, #6c757d);
+        }
+    }
+}
+
+// Animation for new levels
+@keyframes levelFlash {
+    0% {
+        background: var(--color-warning, #ffc107);
+        opacity: 0.3;
+    }
+    100% {
+        background: transparent;
+        opacity: 1;
+    }
+}
+
+.order-level.new {
+    animation: levelFlash 0.5s ease-out;
+}
+
+// Dark theme
+.dark-theme .order-book {
+    background: var(--color-bg-primary-dark, #2d2d2d);
+    border-color: var(--color-border-dark, #404040);
+    
+    &__header,
+    &__footer {
+        background: var(--color-bg-secondary-dark, #1a1a1a);
+        border-color: var(--color-border-dark, #404040);
+        
+        h3 {
+            color: var(--color-text-primary-dark, #ffffff);
+        }
+        
+        .market-info .info-item .value {
+            color: var(--color-text-primary-dark, #ffffff);
+        }
+    }
+    
+    &__headers {
+        background: var(--color-bg-tertiary-dark, #3a3a3a);
+        border-color: var(--color-border-dark, #404040);
+    }
+    
+    .order-level:hover {
+        background: var(--color-bg-hover-dark, #3a3a3a);
+    }
+    
+    .spread-indicator {
+        background: var(--color-bg-tertiary-dark, #3a3a3a);
+        border-color: var(--color-border-dark, #404040);
+        
+        .spread-text {
+            background: var(--color-bg-tertiary-dark, #3a3a3a);
+            color: var(--color-text-secondary-dark, #b0b0b0);
+        }
+    }
+}

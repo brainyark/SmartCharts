@@ -23,6 +23,8 @@ import PaginationLoaderStore from '../store/PaginationLoaderStore';
 import ToolbarWidgetStore from '../store/ToolbarWidgetStore';
 import ScrollStore from '../store/ScrollStore';
 import ChartAdapterStore from 'src/store/ChartAdapterStore';
+import TradingPlatformStore from '../store/TradingPlatformStore';
+import TradingBotStore from '../store/TradingBotStore';
 
 export type TMainStore = {
     notifier: Notifier;
@@ -50,6 +52,8 @@ export type TMainStore = {
     toolbarWidget: ToolbarWidgetStore;
     scroll: ScrollStore;
     chartAdapter: ChartAdapterStore;
+    tradingPlatform: TradingPlatformStore;
+    tradingBot: TradingBotStore;
 };
 
 export type Stores = Notifier;

@@ -14,6 +14,7 @@ import SmartChart from './components/SmartChart';
 import ChartTitle from './components/ChartTitle';
 import FastMarker from './components/FastMarker';
 import ToolbarWidget from './components/ToolbarWidget';
+import { TradingPlatform, TradingToolbarWidget } from './components/TradingPlatform';
 import { createObjectFromLocalStorage } from './utils';
 import { logEvent, LogCategories, LogActions } from './utils/ga';
 import './overrides';
@@ -43,6 +44,8 @@ export {
     Timeperiod,
     Views,
     ToolbarWidget,
+    TradingPlatform,
+    TradingToolbarWidget,
     logEvent,
     LogCategories,
     LogActions,
@@ -68,6 +71,8 @@ export default {
     Timeperiod,
     Views,
     ToolbarWidget,
+    TradingPlatform,
+    TradingToolbarWidget,
     logEvent,
     LogCategories,
     LogActions,
