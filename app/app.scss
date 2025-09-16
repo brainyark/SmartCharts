@@ -1,4 +1,5 @@
 /* Used for app only. Do not deploy with library! */
+/* stylelint-disable rule-empty-line-before */
 
 html {
     font-size: 62.5%; /* 1rem = 10px */
@@ -11,6 +12,28 @@ html {
 #root {
     display: flex;
     font-size: 1rem;
+}
+
+.sc-with-plugins {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    grid-gap: 0;
+}
+.sc-root {
+    min-width: 0;
+}
+.sc-plugin-panels {
+    border-left: 1px solid #e6e9ef;
+    background: #fafbfc;
+    padding: 12px;
+    overflow: auto;
+}
+.plugin-panel {
+    background: #fff;
+    border: 1px solid #e1e4ea;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 12px;
 }
 
 .smartcharts-mobile {
